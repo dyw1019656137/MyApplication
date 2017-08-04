@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/other"
+        android:divider="@drawable/shape"
+        android:showDividers="end"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <SearchView
+            android:id="@+id/map_searchview"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="@dimen/myself_left_margin"
+            android:layout_marginLeft="@dimen/myself_left_margin"
+            android:iconifiedByDefault="false"
+            android:queryHint="请输入地址">
+
+        </SearchView>
+    </LinearLayout>
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+    </com.amap.api.maps.MapView>
+    <!--<ToggleButton-->
+        <!--android:id="@+id/change_map"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="top|right"-->
+        <!--android:textOff="普通地图"-->
+        <!--android:textOn="卫星地图"-->
+        <!--android:checked="false"/>-->
+    <RadioGroup
+        android:layout_marginTop="50dp"
+        android:id="@+id/change_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginRight="@dimen/myself_left_margin">
+        <RadioButton
+            android:id="@+id/rdnor"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="普通地图"
+            android:textColor="@android:color/darker_gray"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/rddark"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:text="卫星地图"/>
+    </RadioGroup>
+
+</FrameLayout>

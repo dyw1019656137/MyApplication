@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">安租客</string>
+    <string name="myself_collect">我的收藏</string>
+    <string name="myself_browse">最近浏览</string>
+    <string name="myself_phone">通话记录</string>
+    <string name="other_feedbback">意见反馈</string>
+    <string name="other_good">给我个高分吧！</string>
+    <string name="other_about">关于我</string>
+    <string name="myself">我的</string>
+    <string name="other">更多</string>
+    <string name="nearby">附近</string>
+    <string name="area">区域模块</string>
+    <string name="map">地图</string>
+    <string name="main_find">发现好房</string>
+</resources>

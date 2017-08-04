@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--title="@string/myself"-->
+<tabs>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/home"
+
+        barColorWhenSelected="@color/home" />
+    <tab
+        id="@+id/tab_myself"
+        icon="@drawable/myself"
+
+        barColorWhenSelected="@color/myself" />
+    <tab
+        id="@+id/tab_other"
+        icon="@drawable/other"
+
+        barColorWhenSelected="#CCCCCC" />
+</tabs>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="house"></dbname>
+    <version value = "3"></version>
+
+    <list>
+        <mapping class="com.example.dyw.myapplication.model.CollectHouseOwner"></mapping>
+        <mapping class="com.example.dyw.myapplication.model.RecentHouseOwner"></mapping>
+        <mapping class="com.example.dyw.myapplication.model.PhoneHouseOwner"></mapping>
+        <mapping class="com.example.dyw.myapplication.model.UserLocal"></mapping>
+    </list>
+
+</litepal>
