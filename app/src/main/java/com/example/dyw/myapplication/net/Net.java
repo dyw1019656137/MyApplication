@@ -5,7 +5,7 @@ package com.example.dyw.myapplication.net;
  */
 
 public class Net {
-    public final static String ip = "http://192.168.43.83:8080/House/";
+    public final static String ip = "http://172.20.10.3:8080/House/";
     public final static String showHouseOwnerIP = ip+"houseOwner/houseOwnerAction!showHouseOwner";
     public final static String saveFeedbackIP = ip+"feedback/feedbackAction!saveFeedback";
     public final static String saveHouseOwner = ip+"houseOwner/houseOwnerAction!saveHouseOwner";

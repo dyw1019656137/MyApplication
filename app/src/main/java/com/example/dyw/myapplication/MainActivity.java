@@ -289,8 +289,7 @@ public class MainActivity extends FragmentActivity implements NavigationView.OnN
             startActivity(intent_phone);
             Toast.makeText(MainActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
 
-        }
-        else if (id == R.id.nav_cancel) {
+        } else if (id == R.id.nav_cancel) {
             Intent intent_cancel = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent_cancel);
 
