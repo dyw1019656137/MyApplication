@@ -9,184 +9,229 @@
 
     <LinearLayout
         android:id="@+id/title_someone"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/other">
+        android:background="@color/other"
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/main_Someone_location"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:layout_height="40dp"
-            android:textSize="25dp"
-            android:paddingTop="8dp"
             android:layout_marginTop="@dimen/myself_top_margin"
-            android:text="Someone"
+            android:layout_weight="1"
             android:paddingLeft="50dp"
+            android:paddingTop="8dp"
+            android:text="Someone"
             android:textAlignment="center"
-            />
+            android:textSize="25dp" />
+
         <com.like.LikeButton
-            app:icon_type="star"
-            app:icon_size="20dp"
             android:id="@+id/star_button"
-            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="40dp">
-        </com.like.LikeButton>
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            app:icon_size="20dp"
+            app:icon_type="star"></com.like.LikeButton>
     </LinearLayout>
+
     <com.example.dyw.myapplication.viewpager.MySomeoneViewpager
-        android:layout_below="@+id/title_someone"
         android:id="@+id/main_Someone_img"
         android:layout_width="match_parent"
-        android:background="@color/other"
-        android:layout_height="180dp">
+        android:layout_height="180dp"
+        android:layout_below="@+id/title_someone"
+        android:background="@color/other">
 
     </com.example.dyw.myapplication.viewpager.MySomeoneViewpager>
+
     <TextView
+        android:id="@+id/main_someone_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/main_Someone_img"
         android:layout_marginLeft="@dimen/myself_left_margin"
         android:layout_marginRight="@dimen/myself_left_margin"
         android:layout_marginTop="@dimen/myself_top_margin"
-        android:id="@+id/main_someone_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
     <LinearLayout
         android:id="@+id/someone_moy"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_below="@+id/main_someone_title"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/myself_left_margin"
-        android:layout_width="match_parent"
-        android:layout_height="30dp">
+        android:paddingLeft="@dimen/myself_left_margin">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/myself_left_margin"
             android:text="租金:"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/main_someone_content"
-            android:textSize="25sp"
-            android:text="1500元/月"
-            android:textColor="@color/red"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <TextView
-            android:text="(付三押一)"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_below="@+id/someone_moy"
-        android:id="@+id/how_someone"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/myself_left_margin"
-        android:layout_width="match_parent"
-        android:layout_height="28dp">
-        <TextView
-            android:layout_marginRight="@dimen/myself_left_margin"
-            android:text="房型:"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/main_someone_how"
-            android:text="2室一厅（整租）"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_below="@+id/how_someone"
-        android:id="@+id/someone_info"
-        android:paddingLeft="@dimen/myself_left_margin"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="28dp">
-        <TextView
-            android:layout_marginRight="@dimen/myself_left_margin"
-            android:text="类型:"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/main_someone_info"
-            android:text="普通住宅"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_below="@+id/someone_info"
-        android:paddingLeft="@dimen/myself_left_margin"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_marginRight="@dimen/myself_left_margin"
-            android:text="房间配置："
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/main_someone_device"
-            android:text="床，洗衣机"
-            android:layout_marginLeft="@dimen/myself_left_margin"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        >
-        <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:text="1500元/月"
+            android:textColor="@color/red"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(付三押一)"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/how_someone"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_below="@+id/someone_moy"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myself_left_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/myself_left_margin"
+            android:text="房型:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/main_someone_how"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="2室一厅（整租）"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/someone_info"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_below="@+id/how_someone"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myself_left_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/myself_left_margin"
+            android:text="类型:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/main_someone_info"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="普通住宅"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/someone_info"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myself_left_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/myself_left_margin"
+            android:text="房间配置："
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/main_someone_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/myself_left_margin"
+            android:text="床，洗衣机"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/some_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btm"
+        android:layout_below="@+id/device"/>
+
+    <LinearLayout
+        android:id="@+id/btm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@color/other"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/main_someone_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
                 android:text="贲睿"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="18sp" />
+
             <ImageView
-                android:layout_marginLeft="37dp"
-                android:src="@drawable/turnright"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:src="@drawable/turnright" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="#e0e0e0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="租"
+                android:textColor="#ef6337"
+                android:textSize="30sp" />
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/main_someone_phone"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="#EEEEE0"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
+
             <ImageView
-
-                android:src="@drawable/ic_settings_phone_light_green_400_36dp"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-            <TextView
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_settings_phone_light_green_400_36dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:text="电话"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

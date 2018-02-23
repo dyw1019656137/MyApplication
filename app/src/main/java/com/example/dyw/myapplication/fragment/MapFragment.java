@@ -33,7 +33,7 @@ import static com.example.dyw.myapplication.R.id.map;
  * Created by dyw on 2017/7/4.
  */
 //地图界面
-public class MapFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, LocationSource, AMapLocationListener {
+public class MapFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener, LocationSource, AMapLocationListener {
     LocationSource.OnLocationChangedListener mListener;
     AMapLocationClient mlocationClient;
     AMapLocationClientOption mLocationOption;

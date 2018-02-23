@@ -6,43 +6,20 @@ import java.io.Serializable;
  * Created by dyw on 2017/7/18.
  */
 
-/*
-* {
-    "data": [
-        {
-            "password": "dadasdsa",
-            "headurl": "31212313",
-            "id": 7,
-            "phonenum": "1232312313",
-            "username": "asdffg",
-            "info": "dasdasawa"
-        },
-        {
-            "password": "123",
-            "headurl": "12312312",
-            "id": 1,
-            "phonenum": "123456789",
-            "username": "dyw",
-            "info": "好帅啊"
-        }
-    ]
-}
-*
-* */
 public class UserItem implements Serializable{
-    private String id;
+    private int user_id;
     private String password;
-    private String phonenum;
-    private String username;
+    private String phone;
+    private String name;
     private String info;
     private String headurl;
 
-    public String getId() {
-        return id;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getPassword() {
@@ -53,20 +30,20 @@ public class UserItem implements Serializable{
         this.password = password;
     }
 
-    public String getPhonenum() {
-        return phonenum;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhonenum(String phonenum) {
-        this.phonenum = phonenum;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getInfo() {

@@ -25,7 +25,7 @@ import java.util.List;
  * Created by dyw on 2017/7/4.
  */
 //我的
-public class MyselfFragment extends Fragment{
+public class MyselfFragment extends BaseFragment{
     View view = null;
     @Nullable
     @Override

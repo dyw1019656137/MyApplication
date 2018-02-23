@@ -1,22 +1,18 @@
 package com.example.dyw.myapplication.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.example.dyw.myapplication.MainActivity;
 import com.example.dyw.myapplication.R;
 
 /**
  * Created by dyw on 2017/7/11.
  */
 
-public class WelcomeActivity extends Activity{
+public class WelcomeActivity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

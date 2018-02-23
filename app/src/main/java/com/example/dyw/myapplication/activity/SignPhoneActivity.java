@@ -14,11 +14,14 @@ import com.example.dyw.myapplication.R;
 import com.example.dyw.myapplication.model.User;
 import com.example.dyw.myapplication.model.UserItem;
 import com.example.dyw.myapplication.net.Net;
+import com.example.dyw.myapplication.utils.Utils;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import cn.bmob.sms.BmobSMS;
 import cn.bmob.sms.exception.BmobException;
@@ -27,13 +30,16 @@ import cn.bmob.sms.listener.VerifySMSCodeListener;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class SignPhoneActivity extends AppCompatActivity {
+public class SignPhoneActivity extends BaseActivity {
     Context context;
     EditText sign_phone;
     EditText sign_code;
     Button sign_phone_code;
     Button sign_phone_verify;
     private List<UserItem> userItemList;
+    Timer timer = null;
+    TimerTask mTimerTask = null;
+    private int recLen = 0;//更新倒计时600秒 recLen = 601
     private String key = "729dfe2bfa07b02322ebb039ad9c0e8e";
 
     @Override
@@ -61,8 +67,7 @@ public class SignPhoneActivity extends AppCompatActivity {
             switch (v.getId())
             {
                 case R.id.sign_phone_code:
-
-                    OkGo.get(Net.showUser)
+                    OkGo.get(Net.showUserIP)
                             .tag(this)
                             .execute(new StringCallback() {
                                 @Override
@@ -74,29 +79,26 @@ public class SignPhoneActivity extends AppCompatActivity {
                                     String phone = sign_phone.getText().toString();
                                     for (int i =0;i<userItemList.size();i++)
                                     {
-                                        if (phone.equals(userItemList.get(i).getPhonenum()))
+                                        if (phone.equals(userItemList.get(i).getPhone()))
                                         {
-//                                            System.out.println("SignPhoneActivity(phone):"+phone);
-//                                            System.out.println("SignPhoneActivity(sign_phone_code):"+userItemList.get(i).getPhonenum());
-//                                            System.out.println(phone.equals(userItemList.get(i).getPhonenum()));
                                             flag = true;
                                             break;
                                         }
                                     }
                                     if (flag){
-                                        System.out.println("未发"+flag);
                                         toast("手机已被注册，请联系管理员");
                                     }else {
                                         System.out.println("已发"+flag);
-                                        sign_phone_code.setEnabled(false);
                                         BmobSMS.requestSMSCode(SignPhoneActivity.this, sign_phone.getText().toString(), "House", new RequestSMSCodeListener() {
                                             @Override
                                             public void done(Integer integer, BmobException e) {
                                                 if (e==null)
                                                 {
+                                                    sign_phone_code.setEnabled(false);
+                                                    startTimer();
                                                     toast("已发送"+integer);
                                                 }else {
-//                                                    toast(e.toString());
+                                                    toast("发送失败"+integer);
                                                     System.out.println("requestSMSCode:e.toString"+e.toString());
                                                 }
                                             }
@@ -113,13 +115,13 @@ public class SignPhoneActivity extends AppCompatActivity {
                             {
                                 toast("验证通过");
                                 Intent intent_sign = new Intent(SignPhoneActivity.this,SignInActivity.class);
-                                System.out.println("SignPhoneActivity:(sign_phone.getText().toString())"+sign_phone.getText().toString());
-                                intent_sign.putExtra("phonenum",sign_phone.getText().toString());
-
+//                                System.out.println("SignPhoneActivity:(sign_phone.getText().toString())"+sign_phone.getText().toString());
+                                Utils.setSharedString(SignPhoneActivity.this,Utils.STRING_PHONE,sign_phone.getText().toString());
+//                                intent_sign.putExtra("phone",sign_phone.getText().toString());
                                 startActivity(intent_sign);
                                 SignPhoneActivity.this.finish();
                             }else {
-//                                toast(e.toString());
+                                toast("验证码错误");
                                 System.out.println("verifySmsCode:e.toString"+e.toString());
                             }
                         }
@@ -128,7 +130,53 @@ public class SignPhoneActivity extends AppCompatActivity {
             }
         }
     }
+    private void startTimer(){
+        if (timer == null){
+            timer = new Timer();
+        }
+        if (mTimerTask == null){
+            mTimerTask = new TimerTask() {
+                @Override
+                public void run() {
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            recLen--;
+                            sign_phone_code.setText("获取验证码"+"("+recLen+")");
+                            if(recLen <= 0){
+                                stopTimer();
+                                sign_phone_code.setText("获取验证码");
+                                sign_phone_code.setClickable(true);
+                            }
+                        }
+                    });
+                }
+            };
+        }
+        if (timer != null && mTimerTask != null){
+            timer.schedule(mTimerTask, 1000, 1000);
+        }
+    }
+
+    private void stopTimer(){
+        if (timer != null){
+            timer.cancel();
+            timer = null;
+        }
+        if (mTimerTask != null){
+            mTimerTask.cancel();
+            mTimerTask = null;
+        }
+        recLen = 601;
+    }
     public void toast(String string){
         Toast.makeText(SignPhoneActivity.this, string, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopTimer();
     }
 }

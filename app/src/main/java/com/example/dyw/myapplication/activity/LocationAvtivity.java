@@ -6,9 +6,6 @@ import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,16 +25,11 @@ import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MyLocationStyle;
-import com.example.dyw.myapplication.MainActivity;
-import com.example.dyw.myapplication.MyApplication;
 import com.example.dyw.myapplication.R;
 import com.example.dyw.myapplication.adapter.ListAdapter;
-import com.example.dyw.myapplication.all.CityName;
 import com.example.dyw.myapplication.all.Title;
-import com.example.dyw.myapplication.fragment.MainFragment;
 import com.example.dyw.myapplication.widget.MySideBar;
 
-import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,7 +40,7 @@ import static com.example.dyw.myapplication.all.CityName.city_array;
  * Created by dyw on 2017/7/6.
  */
 
-public class LocationAvtivity extends FragmentActivity implements MySideBar.OnTouchingLetterChangedListener, LocationSource, AMapLocationListener {
+public class LocationAvtivity extends BaseActivity implements MySideBar.OnTouchingLetterChangedListener, LocationSource, AMapLocationListener {
     LocationSource.OnLocationChangedListener mListener;
     private AMap aMap;
     AMapLocationClient mlocationClient;

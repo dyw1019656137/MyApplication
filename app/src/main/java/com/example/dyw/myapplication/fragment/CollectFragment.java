@@ -29,7 +29,7 @@ import java.util.List;
  * Created by dyw on 2017/7/4.
  */
 //我的收藏
-public class CollectFragment extends Fragment{
+public class CollectFragment extends BaseFragment{
     View view =null;
     private ListView myself_collect_listView = null;
     ArrayList<String> list = new ArrayList<>();

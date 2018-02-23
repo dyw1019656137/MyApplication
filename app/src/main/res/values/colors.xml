@@ -10,4 +10,7 @@
     <color name="myself_other_top">#999999</color>
     <color name="white_edit">#FFFFFF</color>
     <color name="red">#FF0000</color>
+
+    <color name="select_color">#24A69E</color>
+    <color name="un_select_color">#B3B3B3</color>
 </resources>

@@ -19,7 +19,7 @@ import com.example.dyw.myapplication.activity.OtherFeedbackActivity;
  * Created by dyw on 2017/7/4.
  */
 //其他
-public class OtherFragment extends Fragment{
+public class OtherFragment extends BaseFragment{
     View view = null;
     @Nullable
     @Override

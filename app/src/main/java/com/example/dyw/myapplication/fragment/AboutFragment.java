@@ -13,7 +13,7 @@ import com.example.dyw.myapplication.R;
  * Created by dyw on 2017/7/4.
  */
 //关于我们
-public class AboutFragment extends Fragment{
+public class AboutFragment extends BaseFragment{
     View view =null;
 
     @Nullable

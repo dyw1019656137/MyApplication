@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
@@ -7,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.example.dyw.myapplication"
         minSdkVersion 18
-        targetSdkVersion 25
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

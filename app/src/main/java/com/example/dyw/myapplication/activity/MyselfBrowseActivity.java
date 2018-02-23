@@ -1,25 +1,13 @@
 package com.example.dyw.myapplication.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
 
-import com.example.dyw.myapplication.MainActivity;
 import com.example.dyw.myapplication.R;
 import com.example.dyw.myapplication.fragment.BrowseFragment;
-import com.example.dyw.myapplication.fragment.MyselfFragment;
-import com.example.dyw.myapplication.model.RecentHouseOwner;
-
-import org.litepal.crud.DataSupport;
-
-import java.util.List;
 
 /**
  * Created by dyw on 2017/7/6.

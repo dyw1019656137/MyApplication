@@ -1,16 +1,12 @@
 package com.example.dyw.myapplication.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 
-import com.example.dyw.myapplication.MainActivity;
 import com.example.dyw.myapplication.R;
-import com.example.dyw.myapplication.fragment.MyselfFragment;
 import com.example.dyw.myapplication.fragment.PhoneFragment;
 
 /**

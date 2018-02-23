@@ -33,7 +33,7 @@ import okhttp3.Response;
  * Created by dyw on 2017/7/4.
  */
 //最近浏览
-public class BrowseFragment extends Fragment{
+public class BrowseFragment extends BaseFragment{
     View view = null;
     private ListView myself_browse_listView = null;
     ArrayList<String> list = new ArrayList<>();

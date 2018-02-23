@@ -1,5 +1,6 @@
 package com.example.dyw.myapplication.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -13,11 +14,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.dyw.myapplication.MainActivity;
 import com.example.dyw.myapplication.R;
 import com.example.dyw.myapplication.model.User;
 import com.example.dyw.myapplication.model.UserItem;
 import com.example.dyw.myapplication.net.Net;
+import com.example.dyw.myapplication.utils.Utils;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -39,31 +40,29 @@ public class SignInActivity extends AppCompatActivity {
     private List userList=new ArrayList();
     boolean flag = false;
     EditText sign_phoneSelf;
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        Intent intent = getIntent();
-        phonenum = intent.getStringExtra("phonenum");
-        System.out.println("SignInActivity(phonenum):"+phonenum);
+        mContext = SignInActivity.this;
+
+//        Intent intent = getIntent();
+//        phonenum = intent.getStringExtra("phone");
+        phonenum = Utils.getSharedString(mContext,Utils.STRING_PHONE);
+//        System.out.println("SignInActivity(phone):"+phonenum);
         Button sign_subBtn = (Button)findViewById(R.id.sign_subBtn);
         View sign_headimg = (View)findViewById(R.id.sign_headimg);
         sign_phoneSelf = (EditText)findViewById(R.id.sign_phoneSelf);
         sign_phoneSelf.setText(phonenum);
         sign_phoneSelf.setFocusable(false);
-
         sign_subBtn.setOnClickListener(new MySignInClickListener());
         sign_headimg.setOnClickListener(new MySignInClickListener());
-
     }
-
     private class MySignInClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-
-
-
             EditText sign_accountEt = (EditText)findViewById(R.id.sign_accountEt);
             EditText sign_pwdEt = (EditText)findViewById(R.id.sign_pwdEt);
             EditText sign_signSelf = (EditText)findViewById(R.id.sign_signSelf);
@@ -79,7 +78,7 @@ public class SignInActivity extends AppCompatActivity {
 
                 case R.id.sign_subBtn:
 
-                    OkGo.get(Net.showUser)
+                    OkGo.get(Net.showUserIP)
                             .tag(this)
                             .execute(new StringCallback() {
                                 @Override
@@ -89,7 +88,7 @@ public class SignInActivity extends AppCompatActivity {
                                     userItemList = usermain.getData();
                                     for (int i =0;i<userItemList.size();i++)
                                     {
-                                        if (username.equals(userItemList.get(i).getUsername()))
+                                        if (username.equals(userItemList.get(i).getName()))
                                         {
                                             flag = true;
                                             break;
@@ -102,10 +101,10 @@ public class SignInActivity extends AppCompatActivity {
                         Toast.makeText(SignInActivity.this,"用户名重复，请重新命名",Toast.LENGTH_SHORT).show();
                     }else {
                         String picKey = UUID.randomUUID().toString();
-                        OkGo.post(Net.saveUser)
-                                .params("user.username",username)
+                        OkGo.post(Net.saveUserIP)
+                                .params("user.name",username)
                                 .params("user.password",sign_pwdEt.getText().toString())
-                                .params("user.phonenum",phonenum)
+                                .params("user.phone",phonenum)
                                 .params("user.info",sign_signSelf.getText().toString())
                                 .params("user.headurl",Net.ip+"houseimage/headurl_"+phonenum+".jpg")
                                 .params("picKey",phonenum)
@@ -114,10 +113,7 @@ public class SignInActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(String s, Call call, Response response) {
                                         Toast.makeText(SignInActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
-
                                         toMainActivity();
-
-
                                     }
                                 });
                     }
@@ -151,7 +147,7 @@ public class SignInActivity extends AppCompatActivity {
         System.out.println("SignInActivity onDestroy");
     }
     public void toMainActivity(){
-        OkGo.get(Net.showUser)
+        OkGo.get(Net.showUserIP)
                 .tag(this)
                 .execute(new StringCallback() {
                     @Override
@@ -161,35 +157,19 @@ public class SignInActivity extends AppCompatActivity {
                         userItemList = usermain.getData();
                         for (int i =0;i<userItemList.size();i++)
                         {
-                            if (userItemList.get(i).getPhonenum().equals(phonenum))
+                            if (userItemList.get(i).getPhone().equals(phonenum))
                             {
                                 userList.clear();
-                                userList.add(userItemList.get(i).getId());
-                                System.out.println("userItemList.get(i).getId()"+userItemList.get(i).getId());
-                                userList.add(userItemList.get(i).getUsername());
-                                System.out.println("userItemList.get(i).getUsername()"+userItemList.get(i).getUsername());
-                                userList.add(userItemList.get(i).getPassword());
-                                userList.add(userItemList.get(i).getInfo());
-                                userList.add(userItemList.get(i).getHeadurl());
-                                userList.add(userItemList.get(i).getPhonenum());
+                                userList.add(userItemList.get(i).getUser_id());
                                 System.out.println("userList.size()::"+userList.size());
                                 break;
                             }
                         }
                         Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-
-                        System.out.println("userList.size():"+userList.size());
-                        Bundle bundle = new Bundle();
-                        bundle.putString("userid", (String) userList.get(0));
-                        bundle.putString("username", (String) userList.get(1));
-                        System.out.println("userList.get(1):"+userList.get(1));
-                        bundle.putString("password",(String)userList.get(2));
-                        System.out.println("userList.get(2)"+userList.get(2));
-                        bundle.putString("userinfo",(String)userList.get(3));
-                        bundle.putString("headurl",(String)userList.get(4));
-                        bundle.putString("phonenum",(String)userList.get(5));
-                        intent.putExtras(bundle);
-
+//                        Bundle bundle = new Bundle();
+//                        bundle.putInt("user_id", (Integer) userList.get(0));
+                        Utils.setSharedString(mContext,Utils.STRING_USERID, String.valueOf(userList.get(0)));
+//                        intent.putExtras(bundle);
                         startActivity(intent);
                         SignInActivity.this.finish();
                     }

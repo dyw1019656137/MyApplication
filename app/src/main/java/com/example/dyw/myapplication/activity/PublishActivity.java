@@ -2,41 +2,30 @@ package com.example.dyw.myapplication.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.dyw.myapplication.MainActivity;
 import com.example.dyw.myapplication.R;
 import com.example.dyw.myapplication.net.Net;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 
 import java.io.File;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.UUID;
 
 import okhttp3.Call;
 import okhttp3.Response;
 
-import static com.example.dyw.myapplication.R.id.publish_houseOwnerLocation;
 import static com.example.dyw.myapplication.R.id.publish_submit;
 
-public class PublishActivity extends AppCompatActivity {
+public class PublishActivity extends BaseActivity {
     private static int RESULT_LOAD_IMAGE1 = 1;
     private static int RESULT_LOAD_IMAGE2 = 2;
     private static int RESULT_LOAD_IMAGE3 = 3;

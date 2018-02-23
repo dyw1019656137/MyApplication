@@ -29,7 +29,7 @@ import java.util.List;
  * Created by dyw on 2017/7/4.
  */
 //通话记录
-public class PhoneFragment extends Fragment{
+public class PhoneFragment extends BaseFragment{
     private ListView myself_phone_listview = null;
     ArrayList<String> list = new ArrayList<>();
     public List<PhoneHouseOwner> phoneHouseOwnerList;
